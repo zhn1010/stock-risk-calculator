@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7e788e32c20d4d7e0bdf6394e3c31062",
+    "revision": "2e46e64f179d1d16087b975ebe01d5ce",
     "url": "/stock-risk-calculator/index.html"
   },
   {
-    "revision": "770f4693162a409283a7",
-    "url": "/stock-risk-calculator/static/css/main.287abdc9.chunk.css"
+    "revision": "9761bcfd7e0fd4439447",
+    "url": "/stock-risk-calculator/static/css/main.c4e626c5.chunk.css"
   },
   {
     "revision": "491526ef2f4856d8250a",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/stock-risk-calculator/static/js/2.ce392021.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "770f4693162a409283a7",
+    "revision": "9761bcfd7e0fd4439447",
     "url": "/stock-risk-calculator/static/js/main.335915ca.chunk.js"
   },
   {
