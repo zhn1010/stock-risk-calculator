@@ -171,7 +171,7 @@ function App() {
                       </TableRow>
                       <TableRow>
                         <TableCell align="right">حجم معامله</TableCell>
-                        <TableCell align="right" className="bold">{tradeValume}</TableCell>
+                        <TableCell align="right" className="bold">{numberWithCommas(Math.floor(tradeValume))}</TableCell>
                         <TableCell align="right">تعداد سهم</TableCell>
                       </TableRow>
                       <TableRow>
@@ -181,12 +181,12 @@ function App() {
                       </TableRow>
                       <TableRow>
                         <TableCell align="right">سرمایه مورد نیاز</TableCell>
-                        <TableCell align="right" className="bold">{tradeValume * values.buyPrice}</TableCell>
+                        <TableCell align="right" className="bold">{numberWithCommas(Math.floor(tradeValume * values.buyPrice))}</TableCell>
                         <TableCell align="right">ریال</TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell align="right">سود سرمایه‌گذاری</TableCell>
-                        <TableCell align="right" className="bold">{tradeProfit}</TableCell>
+                        <TableCell align="right" className="bold">{numberWithCommas(Math.floor(tradeProfit))}</TableCell>
                         <TableCell align="right">ریال</TableCell>
                       </TableRow>
                       <TableRow>
