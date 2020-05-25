@@ -9,6 +9,8 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 import PriceInput from './PriceInput';
 
 // Configure JSS
@@ -76,108 +78,114 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <div style={{display: 'flex'}}>
-          <div className="box">
-            <RTL>
-                <div style={{margin: 5}}>
-                  <TextField
-                    value={values.indexName}
-                    onChange={handleChange}
-                    style={{width: 230}}
-                    label="نام نماد"
-                    name="indexName"
-                  />
-                </div>
-                <PriceInput 
-                  value={values.investmentAmount}
-                  onChange={handleChange}
-                  label="سرمایه بورسی شما"
-                  name="investmentAmount"
-                />
-                <div style={{margin: 5}}>
-                  <TextField
-                    value={values.riskPercent}
-                    onChange={handleChange}
-                    label="درصد ریسک مجاز"
-                    name="riskPercent"
-                    type="number"
-                    style={{width: 230}}
-                    error={values.riskPercent > 100 || values.riskPercent < 0}
-                    InputProps={{
-                      inputProps: { min: 0, max: 100 },
-                      endAdornment: <div>%</div>
-                    }}
-                  />
-                </div>
-                <PriceInput
-                  value={values.riskPrice}
-                  onChange={handleChange}
-                  error={values.riskPrice > values.investmentAmount}
-                  label="مبلغ ریسک مجاز"
-                  name="riskPrice"
-                />
-                <PriceInput
-                  value={values.profitLimit}
-                  onChange={handleChange}
-                  label="حد سود"
-                  name="profitLimit"
-                />
-                <PriceInput
-                  value={values.buyPrice}
-                  onChange={handleChange}
-                  label="قیمت خرید"
-                  name="buyPrice"
-                />
-                <PriceInput
-                  value={values.lossLimit}
-                  onChange={handleChange}
-                  label="حد ضرر"
-                  name="lossLimit"
-                />
-            </RTL>
-          </div>
-          <div className="box">
-            <Table ref={componentRef}>
-              <TableBody>
-                  <TableRow>
-                    <TableCell align="right">تاریخ و زمان</TableCell>
-                    <TableCell align="right">{now.toLocaleDateString("fa", options)}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell align="right">نام نماد</TableCell>
-                    <TableCell align="right">{values.indexName}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell align="right">حجم معامله</TableCell>
-                    <TableCell align="right">{tradeValume}</TableCell>
-                    <TableCell align="right">تعداد سهم</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell align="right">‎ریسک معامله</TableCell>
-                    <TableCell align="right">{tradeRisk}</TableCell>
-                    <TableCell align="right">ریال</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell align="right">سرمایه مورد نیاز</TableCell>
-                    <TableCell align="right">{tradeValume * values.buyPrice}</TableCell>
-                    <TableCell align="right">ریال</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell align="right">سود سرمایه‌گذاری</TableCell>
-                    <TableCell align="right">{tradeProfit}</TableCell>
-                    <TableCell align="right">ریال</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell align="right">نسبت سود به ضرر</TableCell>
-                    <TableCell align="right">{(tradeProfit / tradeRisk) || 0}</TableCell>
-                  </TableRow>
-              </TableBody>
-            </Table>
-            <Pdf targetRef={componentRef} filename="result.pdf">
-              {({ toPdf }) => <Button onClick={toPdf} variant="contained" color="primary" style={{marginTop: 'auto'}}>دانلود فایل PDF</Button>}
-            </Pdf>
-          </div>
-        </div>
+        <Container maxWidth="lg">
+          <Grid container>
+            <Grid item md>
+              <div className="box">
+                <RTL>
+                    <div style={{margin: 5}}>
+                      <TextField
+                        value={values.indexName}
+                        onChange={handleChange}
+                        style={{width: 230}}
+                        label="نام نماد"
+                        name="indexName"
+                      />
+                    </div>
+                    <PriceInput 
+                      value={values.investmentAmount}
+                      onChange={handleChange}
+                      label="سرمایه بورسی شما"
+                      name="investmentAmount"
+                    />
+                    <div style={{margin: 5}}>
+                      <TextField
+                        value={values.riskPercent}
+                        onChange={handleChange}
+                        label="درصد ریسک مجاز"
+                        name="riskPercent"
+                        type="number"
+                        style={{width: 230}}
+                        error={values.riskPercent > 100 || values.riskPercent < 0}
+                        InputProps={{
+                          inputProps: { min: 0, max: 100 },
+                          endAdornment: <div>%</div>
+                        }}
+                      />
+                    </div>
+                    <PriceInput
+                      value={values.riskPrice}
+                      onChange={handleChange}
+                      error={values.riskPrice > values.investmentAmount}
+                      label="مبلغ ریسک مجاز"
+                      name="riskPrice"
+                    />
+                    <PriceInput
+                      value={values.profitLimit}
+                      onChange={handleChange}
+                      label="حد سود"
+                      name="profitLimit"
+                    />
+                    <PriceInput
+                      value={values.buyPrice}
+                      onChange={handleChange}
+                      label="قیمت خرید"
+                      name="buyPrice"
+                    />
+                    <PriceInput
+                      value={values.lossLimit}
+                      onChange={handleChange}
+                      label="حد ضرر"
+                      name="lossLimit"
+                    />
+                </RTL>
+              </div>
+            </Grid>
+            <Grid item md>
+              <div className="box">
+                <Table ref={componentRef} style={{marginBottom: 5}}>
+                  <TableBody>
+                      <TableRow>
+                        <TableCell align="right">تاریخ و زمان</TableCell>
+                        <TableCell align="right">{now.toLocaleDateString("fa", options)}</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell align="right">نام نماد</TableCell>
+                        <TableCell align="right">{values.indexName}</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell align="right">حجم معامله</TableCell>
+                        <TableCell align="right">{tradeValume}</TableCell>
+                        <TableCell align="right">تعداد سهم</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell align="right">‎ریسک معامله</TableCell>
+                        <TableCell align="right">{tradeRisk}</TableCell>
+                        <TableCell align="right">ریال</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell align="right">سرمایه مورد نیاز</TableCell>
+                        <TableCell align="right">{tradeValume * values.buyPrice}</TableCell>
+                        <TableCell align="right">ریال</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell align="right">سود سرمایه‌گذاری</TableCell>
+                        <TableCell align="right">{tradeProfit}</TableCell>
+                        <TableCell align="right">ریال</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell align="right">نسبت سود به ضرر</TableCell>
+                        <TableCell align="right">{(tradeProfit / tradeRisk) || 0}</TableCell>
+                      </TableRow>
+                  </TableBody>
+                </Table>
+                <Pdf targetRef={componentRef} filename="result.pdf">
+                  {({ toPdf }) => <Button onClick={toPdf} variant="contained" color="primary" style={{marginTop: 'auto'}}>دانلود فایل PDF</Button>}
+                </Pdf>
+              </div>
+            </Grid>
+          </Grid>
+        </Container>
       </div>
     </ThemeProvider>
   );

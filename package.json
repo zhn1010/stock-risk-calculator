@@ -2,7 +2,7 @@
   "name": "stock-risk-calculator",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://zhn1010.github.io/stock-price-calculator",
+  "homepage": "http://zhn1010.github.io/stock-risk-calculator/",
   "dependencies": {
     "@material-ui/core": "^4.10.0",
     "@testing-library/jest-dom": "^4.2.4",
