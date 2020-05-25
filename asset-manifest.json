@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/stock-price-calculator/static/css/main.287abdc9.chunk.css",
-    "main.js": "/stock-price-calculator/static/js/main.71d82804.chunk.js",
-    "main.js.map": "/stock-price-calculator/static/js/main.71d82804.chunk.js.map",
-    "runtime-main.js": "/stock-price-calculator/static/js/runtime-main.2d5f0067.js",
-    "runtime-main.js.map": "/stock-price-calculator/static/js/runtime-main.2d5f0067.js.map",
-    "static/js/2.219835db.chunk.js": "/stock-price-calculator/static/js/2.219835db.chunk.js",
-    "static/js/2.219835db.chunk.js.map": "/stock-price-calculator/static/js/2.219835db.chunk.js.map",
-    "index.html": "/stock-price-calculator/index.html",
-    "precache-manifest.f1b156b0150ee87b960a7fbe8ae55e2a.js": "/stock-price-calculator/precache-manifest.f1b156b0150ee87b960a7fbe8ae55e2a.js",
-    "service-worker.js": "/stock-price-calculator/service-worker.js",
-    "static/css/main.287abdc9.chunk.css.map": "/stock-price-calculator/static/css/main.287abdc9.chunk.css.map",
-    "static/js/2.219835db.chunk.js.LICENSE.txt": "/stock-price-calculator/static/js/2.219835db.chunk.js.LICENSE.txt"
+    "main.css": "/stock-risk-calculator/static/css/main.287abdc9.chunk.css",
+    "main.js": "/stock-risk-calculator/static/js/main.42ef9263.chunk.js",
+    "main.js.map": "/stock-risk-calculator/static/js/main.42ef9263.chunk.js.map",
+    "runtime-main.js": "/stock-risk-calculator/static/js/runtime-main.1e122a3b.js",
+    "runtime-main.js.map": "/stock-risk-calculator/static/js/runtime-main.1e122a3b.js.map",
+    "static/js/2.219835db.chunk.js": "/stock-risk-calculator/static/js/2.219835db.chunk.js",
+    "static/js/2.219835db.chunk.js.map": "/stock-risk-calculator/static/js/2.219835db.chunk.js.map",
+    "index.html": "/stock-risk-calculator/index.html",
+    "precache-manifest.f6d54e0446bc5a085ae0896c18382778.js": "/stock-risk-calculator/precache-manifest.f6d54e0446bc5a085ae0896c18382778.js",
+    "service-worker.js": "/stock-risk-calculator/service-worker.js",
+    "static/css/main.287abdc9.chunk.css.map": "/stock-risk-calculator/static/css/main.287abdc9.chunk.css.map",
+    "static/js/2.219835db.chunk.js.LICENSE.txt": "/stock-risk-calculator/static/js/2.219835db.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.2d5f0067.js",
+    "static/js/runtime-main.1e122a3b.js",
     "static/js/2.219835db.chunk.js",
     "static/css/main.287abdc9.chunk.css",
-    "static/js/main.71d82804.chunk.js"
+    "static/js/main.42ef9263.chunk.js"
   ]
 }
