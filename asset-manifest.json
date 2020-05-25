@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/stock-risk-calculator/static/css/main.d3c867ae.chunk.css",
-    "main.js": "/stock-risk-calculator/static/js/main.90722cbf.chunk.js",
-    "main.js.map": "/stock-risk-calculator/static/js/main.90722cbf.chunk.js.map",
+    "main.js": "/stock-risk-calculator/static/js/main.2415adb1.chunk.js",
+    "main.js.map": "/stock-risk-calculator/static/js/main.2415adb1.chunk.js.map",
     "runtime-main.js": "/stock-risk-calculator/static/js/runtime-main.1e122a3b.js",
     "runtime-main.js.map": "/stock-risk-calculator/static/js/runtime-main.1e122a3b.js.map",
-    "static/js/2.38f2c5ed.chunk.js": "/stock-risk-calculator/static/js/2.38f2c5ed.chunk.js",
-    "static/js/2.38f2c5ed.chunk.js.map": "/stock-risk-calculator/static/js/2.38f2c5ed.chunk.js.map",
+    "static/js/2.3c6cb0a6.chunk.js": "/stock-risk-calculator/static/js/2.3c6cb0a6.chunk.js",
+    "static/js/2.3c6cb0a6.chunk.js.map": "/stock-risk-calculator/static/js/2.3c6cb0a6.chunk.js.map",
     "index.html": "/stock-risk-calculator/index.html",
-    "precache-manifest.e98d1e0bcc9ace6912f7508ac9c7d801.js": "/stock-risk-calculator/precache-manifest.e98d1e0bcc9ace6912f7508ac9c7d801.js",
+    "precache-manifest.ed673dfc547f4c2c8a5cc2cd65d6b7af.js": "/stock-risk-calculator/precache-manifest.ed673dfc547f4c2c8a5cc2cd65d6b7af.js",
     "service-worker.js": "/stock-risk-calculator/service-worker.js",
     "static/css/main.d3c867ae.chunk.css.map": "/stock-risk-calculator/static/css/main.d3c867ae.chunk.css.map",
-    "static/js/2.38f2c5ed.chunk.js.LICENSE.txt": "/stock-risk-calculator/static/js/2.38f2c5ed.chunk.js.LICENSE.txt"
+    "static/js/2.3c6cb0a6.chunk.js.LICENSE.txt": "/stock-risk-calculator/static/js/2.3c6cb0a6.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.1e122a3b.js",
-    "static/js/2.38f2c5ed.chunk.js",
+    "static/js/2.3c6cb0a6.chunk.js",
     "static/css/main.d3c867ae.chunk.css",
-    "static/js/main.90722cbf.chunk.js"
+    "static/js/main.2415adb1.chunk.js"
   ]
 }
