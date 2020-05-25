@@ -24,6 +24,9 @@ function RTL(props) {
   );
 }
 
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 function App() {
   const [values, setValues] = React.useState({
@@ -71,9 +74,9 @@ function App() {
       second: "numeric",
   };
 
-  const tradeValume = values.riskPrice/(values.buyPrice - values.lossLimit * 0.015) || 0;
-  const tradeProfit = values.profitLimit - values.buyPrice;
-  const tradeRisk = values.buyPrice - values.lossLimit;
+  const tradeValume = values.riskPrice/(values.buyPrice - values.lossLimit) || 0;
+  const tradeProfit = tradeValume * (values.buyPrice - values.profitLimit);
+  const tradeRisk = values.lossLimit;
 
   return (
     <ThemeProvider theme={theme}>
@@ -116,7 +119,7 @@ function App() {
                     <PriceInput
                       value={values.riskPrice}
                       onChange={handleChange}
-                      error={values.riskPrice > values.investmentAmount}
+                      error={Number(values.riskPrice) > Number(values.investmentAmount)}
                       label="مبلغ ریسک مجاز"
                       name="riskPrice"
                     />
@@ -160,22 +163,38 @@ function App() {
                       </TableRow>
                       <TableRow>
                         <TableCell align="right">‎ریسک معامله</TableCell>
-                        <TableCell align="right">{tradeRisk}</TableCell>
+                        <TableCell align="right">{numberWithCommas(tradeRisk)}</TableCell>
                         <TableCell align="right">ریال</TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell align="right">سرمایه مورد نیاز</TableCell>
-                        <TableCell align="right">{tradeValume * values.buyPrice}</TableCell>
+                        <TableCell align="right">{numberWithCommas(tradeValume * values.buyPrice)}</TableCell>
                         <TableCell align="right">ریال</TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell align="right">سود سرمایه‌گذاری</TableCell>
-                        <TableCell align="right">{tradeProfit}</TableCell>
+                        <TableCell align="right">{numberWithCommas(tradeProfit)}</TableCell>
+                        <TableCell align="right">ریال</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell align="right">حد سود</TableCell>
+                        <TableCell align="right">{numberWithCommas(values.profitLimit)}</TableCell>
+                        <TableCell align="right">ریال</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell align="right">حد ضرر</TableCell>
+                        <TableCell align="right">{numberWithCommas(values.lossLimit)}</TableCell>
+                        <TableCell align="right">ریال</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell align="right">قیمت خرید</TableCell>
+                        <TableCell align="right">{numberWithCommas(values.buyPrice)}</TableCell>
                         <TableCell align="right">ریال</TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell align="right">نسبت سود به ضرر</TableCell>
                         <TableCell align="right">{(tradeProfit / tradeRisk) || 0}</TableCell>
+                        <TableCell align="right"></TableCell>
                       </TableRow>
                   </TableBody>
                 </Table>
