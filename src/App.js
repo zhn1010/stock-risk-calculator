@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 import { createMuiTheme, ThemeProvider, TextField, Button } from '@material-ui/core';
-import Pdf from "react-to-pdf";
+// import Pdf from "react-to-pdf";
+import { exportComponentAsPDF } from "react-component-export-image";
 import { create } from 'jss';
 import rtl from 'jss-rtl';
 import { StylesProvider, jssPreset } from '@material-ui/core/styles';
@@ -24,8 +25,9 @@ function RTL(props) {
   );
 }
 
-function numberWithCommas(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+function numberWithCommas(x, num = 3) {
+  const regex = new RegExp(`\\B(?=(\\d{${num}})+(?!\\d))`, 'g');
+  return x.toString().replace(regex, ",");
 }
 
 function App() {
@@ -84,7 +86,8 @@ function App() {
 
   const tradeValume = values.riskPrice/(values.buyPrice - values.lossLimit) || 0;
   const tradeProfit = tradeValume * (values.profitLimit - values.buyPrice);
-  const tradeRisk = values.lossLimit;
+  const tradeRisk = values.riskPrice;
+  const profitToLossRatio = parseFloat(((values.profitLimit - values.buyPrice) / (values.buyPrice - values.lossLimit)) || 0).toFixed(2);
 
   return (
     <ThemeProvider theme={theme}>
@@ -154,7 +157,7 @@ function App() {
             </Grid>
             <Grid item md>
               <div className="box">
-                <Table ref={componentRef} style={{marginBottom: 5}}>
+                <Table ref={componentRef} style={{marginBottom: 15}}>
                   <TableBody>
                       <TableRow>
                         <TableCell align="right">تاریخ و زمان</TableCell>
@@ -178,12 +181,12 @@ function App() {
                       </TableRow>
                       <TableRow>
                         <TableCell align="right">سرمایه مورد نیاز</TableCell>
-                        <TableCell align="right" className="bold">{numberWithCommas(tradeValume * values.buyPrice)}</TableCell>
+                        <TableCell align="right" className="bold">{tradeValume * values.buyPrice}</TableCell>
                         <TableCell align="right">ریال</TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell align="right">سود سرمایه‌گذاری</TableCell>
-                        <TableCell align="right" className="bold">{numberWithCommas(tradeProfit)}</TableCell>
+                        <TableCell align="right" className="bold">{tradeProfit}</TableCell>
                         <TableCell align="right">ریال</TableCell>
                       </TableRow>
                       <TableRow>
@@ -203,14 +206,14 @@ function App() {
                       </TableRow>
                       <TableRow>
                         <TableCell align="right">نسبت سود به ضرر</TableCell>
-                        <TableCell align="right" className="bold">{((values.profitLimit - values.buyPrice) / (values.buyPrice - values.lossLimit)) || 0}</TableCell>
+                        <TableCell align="right" className="bold">{profitToLossRatio}</TableCell>
                         <TableCell align="right"></TableCell>
                       </TableRow>
                   </TableBody>
                 </Table>
-                <Pdf targetRef={componentRef} filename={`${values.indexName} ${dateTime}.pdf`}>
-                  {({ toPdf }) => <Button onClick={toPdf} variant="contained" color="primary" style={{marginTop: 'auto'}}>دانلود فایل PDF</Button>}
-                </Pdf>
+                <Button variant="contained" color="primary" onClick={() => exportComponentAsPDF(componentRef, `${values.indexName} ${dateTime}.pdf`)}>
+                  دانلود فایل PDF
+                </Button>
               </div>
             </Grid>
           </Grid>

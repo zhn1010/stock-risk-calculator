@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^7.2.1",
     "jss-rtl": "^0.3.0",
     "react": "^16.13.1",
+    "react-component-export-image": "^0.1.6",
     "react-dom": "^16.13.1",
     "react-number-format": "^4.4.1",
     "react-scripts": "3.4.1",
