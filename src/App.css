@@ -12,3 +12,7 @@
   margin: 30px 5px;
   padding: 10px;
 }
+
+.bold {
+  font-weight: 700 !important;
+}

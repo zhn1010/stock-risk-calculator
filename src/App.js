@@ -65,17 +65,25 @@ function App() {
 
   const now = new Date();
 
-  const options = {
+  const dateOptions = {
       year: "numeric",
       month: "long",
       day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      second: "numeric",
   };
 
+  const timeOptions = {
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+  };
+
+  const dateString = now.toLocaleDateString("fa", dateOptions);
+  const timeString = now.toLocaleTimeString("fa", timeOptions);
+
+  const dateTime = `${dateString} - ${timeString}`;
+
   const tradeValume = values.riskPrice/(values.buyPrice - values.lossLimit) || 0;
-  const tradeProfit = tradeValume * (values.buyPrice - values.profitLimit);
+  const tradeProfit = tradeValume * (values.profitLimit - values.buyPrice);
   const tradeRisk = values.lossLimit;
 
   return (
@@ -150,55 +158,57 @@ function App() {
                   <TableBody>
                       <TableRow>
                         <TableCell align="right">تاریخ و زمان</TableCell>
-                        <TableCell align="right">{now.toLocaleDateString("fa", options)}</TableCell>
+                        <TableCell align="right" className="bold">{dateTime}</TableCell>
+                        <TableCell align="right"></TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell align="right">نام نماد</TableCell>
-                        <TableCell align="right">{values.indexName}</TableCell>
+                        <TableCell align="right" className="bold">{values.indexName}</TableCell>
+                        <TableCell align="right"></TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell align="right">حجم معامله</TableCell>
-                        <TableCell align="right">{tradeValume}</TableCell>
+                        <TableCell align="right" className="bold">{tradeValume}</TableCell>
                         <TableCell align="right">تعداد سهم</TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell align="right">‎ریسک معامله</TableCell>
-                        <TableCell align="right">{numberWithCommas(tradeRisk)}</TableCell>
+                        <TableCell align="right" className="bold">{numberWithCommas(tradeRisk)}</TableCell>
                         <TableCell align="right">ریال</TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell align="right">سرمایه مورد نیاز</TableCell>
-                        <TableCell align="right">{numberWithCommas(tradeValume * values.buyPrice)}</TableCell>
+                        <TableCell align="right" className="bold">{numberWithCommas(tradeValume * values.buyPrice)}</TableCell>
                         <TableCell align="right">ریال</TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell align="right">سود سرمایه‌گذاری</TableCell>
-                        <TableCell align="right">{numberWithCommas(tradeProfit)}</TableCell>
+                        <TableCell align="right" className="bold">{numberWithCommas(tradeProfit)}</TableCell>
                         <TableCell align="right">ریال</TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell align="right">حد سود</TableCell>
-                        <TableCell align="right">{numberWithCommas(values.profitLimit)}</TableCell>
-                        <TableCell align="right">ریال</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell align="right">حد ضرر</TableCell>
-                        <TableCell align="right">{numberWithCommas(values.lossLimit)}</TableCell>
+                        <TableCell align="right" className="bold">{numberWithCommas(values.profitLimit)}</TableCell>
                         <TableCell align="right">ریال</TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell align="right">قیمت خرید</TableCell>
-                        <TableCell align="right">{numberWithCommas(values.buyPrice)}</TableCell>
+                        <TableCell align="right" className="bold">{numberWithCommas(values.buyPrice)}</TableCell>
+                        <TableCell align="right">ریال</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell align="right">حد ضرر</TableCell>
+                        <TableCell align="right" className="bold">{numberWithCommas(values.lossLimit)}</TableCell>
                         <TableCell align="right">ریال</TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell align="right">نسبت سود به ضرر</TableCell>
-                        <TableCell align="right">{(tradeProfit / tradeRisk) || 0}</TableCell>
+                        <TableCell align="right" className="bold">{((values.profitLimit - values.buyPrice) / (values.buyPrice - values.lossLimit)) || 0}</TableCell>
                         <TableCell align="right"></TableCell>
                       </TableRow>
                   </TableBody>
                 </Table>
-                <Pdf targetRef={componentRef} filename="result.pdf">
+                <Pdf targetRef={componentRef} filename={`${values.indexName} ${dateTime}.pdf`}>
                   {({ toPdf }) => <Button onClick={toPdf} variant="contained" color="primary" style={{marginTop: 'auto'}}>دانلود فایل PDF</Button>}
                 </Pdf>
               </div>
