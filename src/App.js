@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { createMuiTheme, ThemeProvider, TextField, Button } from '@material-ui/core';
 // import Pdf from "react-to-pdf";
-import { exportComponentAsPDF } from "react-component-export-image";
+// import { exportComponentAsPDF } from "react-component-export-image";
 import { create } from 'jss';
 import rtl from 'jss-rtl';
 import { StylesProvider, jssPreset } from '@material-ui/core/styles';
@@ -31,7 +31,7 @@ function numberWithCommas(x, num = 3) {
 }
 
 function App() {
-  const [values, setValues] = React.useState({
+  const startState = {
     investmentAmount: '',
     riskPercent: null,
     riskPrice: '',
@@ -39,7 +39,8 @@ function App() {
     buyPrice: '',
     lossLimit: '',
     indexName: '',
-  });
+  };
+  const [values, setValues] = React.useState(startState);
   const componentRef = React.useRef();
   const theme = createMuiTheme({
     direction: 'rtl',
@@ -128,13 +129,6 @@ function App() {
                       />
                     </div>
                     <PriceInput
-                      value={values.riskPrice}
-                      onChange={handleChange}
-                      error={Number(values.riskPrice) > Number(values.investmentAmount)}
-                      label="مبلغ ریسک مجاز"
-                      name="riskPrice"
-                    />
-                    <PriceInput
                       value={values.profitLimit}
                       onChange={handleChange}
                       label="حد سود"
@@ -211,8 +205,8 @@ function App() {
                       </TableRow>
                   </TableBody>
                 </Table>
-                <Button variant="contained" color="primary" onClick={() => exportComponentAsPDF(componentRef, `${values.indexName} ${dateTime}.pdf`)}>
-                  دانلود فایل PDF
+                <Button onClick={() => {setValues(startState)}} style={{border: '1px solid gray', borderRadius: 5}}>
+                  پاک کردن
                 </Button>
               </div>
             </Grid>
