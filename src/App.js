@@ -33,7 +33,7 @@ function numberWithCommas(x, num = 3) {
 function App() {
   const startState = {
     investmentAmount: '',
-    riskPercent: null,
+    riskPercent: '',
     riskPrice: '',
     profitLimit: '',
     buyPrice: '',
@@ -56,9 +56,6 @@ function App() {
     if (event.target.name === "riskPercent") {
       aug = {riskPrice: values.investmentAmount * event.target.value / 100};
     } 
-    else if (event.target.name === "riskPrice") {
-      aug = {riskPercent: Math.floor((event.target.value / values.investmentAmount) * 100)};
-    }
     setValues({
       ...values,
       [event.target.name]: event.target.value,
@@ -90,12 +87,13 @@ function App() {
   const tradeRisk = values.riskPrice;
   const profitToLossRatio = parseFloat(((values.profitLimit - values.buyPrice) / (values.buyPrice - values.lossLimit)) || 0).toFixed(2);
 
+  console.log(values);
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
         <Container maxWidth="lg">
           <Grid container>
-            <Grid item md>
+            <Grid item xs>
               <div className="box">
                 <RTL>
                     <div style={{margin: 5}}>
@@ -149,7 +147,7 @@ function App() {
                 </RTL>
               </div>
             </Grid>
-            <Grid item md>
+            <Grid item xs>
               <div className="box">
                 <Table ref={componentRef} style={{marginBottom: 15}}>
                   <TableBody>
@@ -205,7 +203,15 @@ function App() {
                       </TableRow>
                   </TableBody>
                 </Table>
-                <Button onClick={() => {setValues(startState)}} style={{border: '1px solid gray', borderRadius: 5}}>
+                <Button
+                  onClick={() => {setValues({
+                              ...values,
+                              profitLimit: '',
+                              buyPrice: '',
+                              lossLimit: '',
+                              indexName: ''})}}
+                  style={{border: '1px solid gray', borderRadius: 5}}
+                >
                   پاک کردن
                 </Button>
               </div>
