@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/stock-risk-calculator/precache-manifest.b4af2a7bcabafdf5bfeef22864a6e3da.js"
+  "/stock-risk-calculator/precache-manifest.80b963a11add0ca6c8e2c78355444013.js"
 );
 
 self.addEventListener('message', (event) => {
