@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { createMuiTheme, ThemeProvider, TextField, Button } from '@material-ui/core';
+import { createMuiTheme, ThemeProvider, TextField, Button, Typography } from '@material-ui/core';
 // import Pdf from "react-to-pdf";
 // import { exportComponentAsPDF } from "react-component-export-image";
 import { create } from 'jss';
@@ -80,14 +80,13 @@ function App() {
   const dateString = now.toLocaleDateString("fa", dateOptions);
   const timeString = now.toLocaleTimeString("fa", timeOptions);
 
-  const dateTime = `${dateString} - ${timeString}`;
+  const dateTime = `${timeString} - ${dateString}`;
 
   const tradeValume = values.riskPrice/(values.buyPrice - values.lossLimit) || 0;
   const tradeProfit = tradeValume * (values.profitLimit - values.buyPrice);
   const tradeRisk = values.riskPrice;
   const profitToLossRatio = parseFloat(((values.profitLimit - values.buyPrice) / (values.buyPrice - values.lossLimit)) || 0).toFixed(2);
 
-  console.log(values);
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
@@ -149,13 +148,9 @@ function App() {
             </Grid>
             <Grid item xs>
               <div className="box">
+                <Typography>{dateTime}</Typography>
                 <Table ref={componentRef} style={{marginBottom: 15}}>
                   <TableBody>
-                      <TableRow>
-                        <TableCell align="right">تاریخ و زمان</TableCell>
-                        <TableCell align="right" className="bold">{dateTime}</TableCell>
-                        <TableCell align="right"></TableCell>
-                      </TableRow>
                       <TableRow>
                         <TableCell align="right">نام نماد</TableCell>
                         <TableCell align="right" className="bold">{values.indexName}</TableCell>
